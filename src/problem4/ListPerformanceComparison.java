@@ -17,8 +17,8 @@ public class ListPerformanceComparison {
 
         System.out.println("---- Populate both lists ----");
         for (int i = 0; i < SIZE; i++) {
-            //code here
-            //code here
+            arrayList.add(i);
+            linkedList.add(i);
         }
 
         // 2️⃣ Random insertions and deletions
@@ -41,6 +41,10 @@ public class ListPerformanceComparison {
         long start = System.nanoTime();
 
         // insert your code here
+        for(int i = 0 ; i < OPERATIONS ; i++) {
+            list.add(random.nextInt(list.size()), random.nextInt());
+            list.remove(random.nextInt(list.size()));
+        }
 
         long end = System.nanoTime();
         System.out.printf("%s - Random insert/delete: %.3f ms%n",
@@ -51,6 +55,7 @@ public class ListPerformanceComparison {
 
     private static void testSequentialInsertDelete(List<Integer> list, String name) {
         long start = System.nanoTime();
+        Random random = new Random();
 
         // Insertions at beginning and end
 
@@ -60,6 +65,19 @@ public class ListPerformanceComparison {
 
         // add your code here
 
+        for(int i = 0 ; i < OPERATIONS ; i ++){
+            if(list instanceof LinkedList<Integer>){
+                ((LinkedList<Integer>) list).addFirst(random.nextInt());
+                ((LinkedList<Integer>) list).addLast(random.nextInt());
+                ((LinkedList<Integer>) list).removeFirst();
+                ((LinkedList<Integer>) list).removeLast();
+            }else{
+                list.add(0,random.nextInt());
+                list.add(random.nextInt());
+                list.remove(0);
+                list.remove(list.size()-1);
+            }
+        }
         long end = System.nanoTime();
         System.out.printf("%s - Sequential insert/delete (start/end): %.3f ms%n",
                 name, (end - start) / 1_000_000.0);
@@ -73,6 +91,9 @@ public class ListPerformanceComparison {
 
         long sum = 0;
         // sum of the all elements in the list
+        for(int i = 0; i < list.size() ; i++){
+            sum += list.get(i);
+        }
        // insert your code here
 
         long end = System.nanoTime();
