@@ -25,4 +25,13 @@ public class Magazine extends Document{
     public void setMonth(String month) {
         this.month = month;
     }
+    @Override
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append("Magazine of id ").append(super.getNumRec())
+                .append(" and of title: ").append(super.getTitle());
+        s.append("\nIts release month is: ").append(month)
+                .append(" and the release year is: ").append(year);
+        return s.toString();
+    }
 }

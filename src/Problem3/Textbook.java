@@ -2,8 +2,8 @@ package Problem3;
 
 public class Textbook extends Book{
     private String level;
-    public Textbook(String title, Library lib, String author , int nbrPages , String level){
-        super(title,lib,author,nbrPages);
+    public Textbook(String title,String author , int nbrPages, Library lib , String level){
+        super(title,author,nbrPages,lib);
         this.level = level;
     }
 
@@ -13,5 +13,15 @@ public class Textbook extends Book{
 
     public void setLevel(String level) {
         this.level = level;
+    }
+    @Override
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append("Novel of id ").append(super.getNumRec())
+                .append(" and of title: ").append(super.getTitle());
+        s.append("\nThe author is ").append(super.getAuthor())
+                .append(" and the number of pages is: ").append(super.getNbrPages())
+                .append("\nIts level is: ").append(level);
+        return s.toString();
     }
 }

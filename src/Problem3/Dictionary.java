@@ -14,4 +14,13 @@ public class Dictionary extends Document{
     public String getLanguage() {
         return language;
     }
+
+    @Override
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append("Dictionary of id ").append(super.getNumRec())
+                .append(" and of title: ").append(super.getTitle());
+        s.append("\nIts language is : ").append(language);
+        return s.toString();
+    }
 }

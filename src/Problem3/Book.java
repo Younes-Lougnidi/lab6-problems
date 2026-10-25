@@ -26,10 +26,14 @@ public class Book extends Document{
     public void setNbrPages(int nbrPages) {
         this.nbrPages = nbrPages;
     }
+
+    @Override
     public String toString(){
         StringBuilder s = new StringBuilder();
         s.append("Book of id ").append(super.getNumRec())
-                .append(" and of title: ").append(title);
+                .append(" and of title: ").append(super.getTitle());
+        s.append("\nThe author is ").append(author)
+                .append(" and the number of pages is: ").append(nbrPages);
         return s.toString();
     }
 }
